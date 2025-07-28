@@ -1,21 +1,6 @@
 # Original code from Audacity's mod-script-pipe.
-# Modified to perform commands on raw image files in bulk.
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""Tests the audacity pipe.
-
-Keep pipe_test.py short!!
-You can make more complicated longer tests to test other functionality
-or to generate screenshots etc in other scripts.
-
-Make sure Audacity is running first and that mod-script-pipe is enabled
-before running this script.
-
-Requires Python 2.7 or later. Python 3 is strongly recommended.
-
-"""
+# This python script executes commands in Audacity to perform commands on raw image files as tracks.
+# The script ensures the pipe connection and then sends commands to manipulate the audio data in the tracks.
 
 import os
 import sys
@@ -77,6 +62,7 @@ def do_command(command):
     print("Rcvd: <<< \n" + response)
     return response
 
+# This function executes Audacity commands. 
 def databend_img():
     # Select track in project.
     do_command('SelectAll:')
@@ -93,8 +79,12 @@ def databend_img():
     # into this function to allow the script to do different databends.
     
     # The following are exmples of commands that can be used to manipulate the audio.
+    # Amplify audio:
     # do_command('Amplify:Ratio=0.7')
+
+    # Bass and Treble adjustment:
     # do_command('BassAndTreble:Bass=0.5 Treble=-0.5')
+    
     do_command('ChangeTempo: Percentage=3')
     # TODO: When audacity supports direct exporting to raw audio files,
     # we can export the raw audio file here.
